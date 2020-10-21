@@ -7,6 +7,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.renderscript.Allocation;
 import android.view.View;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onDraw(Canvas canvas){
 
-            Paint miPincel= new Paint();
+            /*Paint miPincel= new Paint();
 
             //miPincel.setColor(Color.BLUE);
 
@@ -49,7 +51,32 @@ public class MainActivity extends AppCompatActivity {
 
             miPincel.setStyle(Paint.Style.FILL);
 
-            canvas.drawCircle(500,500,300,miPincel);
+            canvas.drawCircle(500,500,300,miPincel);*/
+
+            Path miTrazo = new Path();
+
+            miTrazo.addCircle(350,350,200,Path.Direction.CCW);
+
+            Paint miPincel=new Paint();
+
+            miPincel.setColor(Color.RED);
+
+            miPincel.setStrokeWidth(8);
+
+            miPincel.setStyle(Paint.Style.STROKE);
+
+            canvas.drawPath(miTrazo,miPincel);
+
+            miPincel.setStrokeWidth(1);
+
+            miPincel.setStyle(Paint.Style.FILL);
+
+            miPincel.setTextSize(40);
+
+            miPincel.setTypeface(Typeface.SANS_SERIF);
+
+            canvas.drawTextOnPath("Curso Android píldoras Informáticas",miTrazo,40,100,miPincel);
+
 
         }
     }
